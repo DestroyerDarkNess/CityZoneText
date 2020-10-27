@@ -1,0 +1,8 @@
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\bin\Release\CityZoneText.dll
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\bin\Release\CityZoneText.pdb
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\bin\Release\CityZoneText.xml
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\obj\Release\CityZoneText.Resources.resources
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\obj\Release\CityZoneText.vbproj.GenerateResource.Cache
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\obj\Release\CityZoneText.dll
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\obj\Release\CityZoneText.xml
+c:\users\s4lsalsoft\documents\visual studio 2013\Projects\CityZoneText\CityZoneText\obj\Release\CityZoneText.pdb
