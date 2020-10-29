@@ -37,6 +37,20 @@ Namespace Udrakoloader
 
         Private Shared CzoneText As String = String.Empty
 
+#Region " TextEfecct "
+
+        Private Shared UseEffect As Boolean = True
+
+        Private Shared _Showing As String = ""
+        Private Shared _avrchar As Integer = 0
+        Private Shared _AwaitTIme As Integer = 0
+        Private Shared _MaxAwaitTIme As Integer = 5
+        Private Shared ContinueAwait As Boolean = True
+        Private Shared LocalTextCounter As String = String.Empty
+        Private Shared _Interval As Integer = 2
+
+#End Region
+
         Private Shared ScriptAsyc As New Action(
         Sub()
 
@@ -79,14 +93,63 @@ Namespace Udrakoloader
                     GameSize.Y = GameResolutionScreen.Y
 
                     LabelZoneText.X = Val((GameSize.X / 2) - (80))
-                    LabelZoneText.Y = Val((GameSize.Y - 50))
+                    LabelZoneText.Y = Val((GameSize.Y - 30))
+
+                    If UseEffect = True Then
+
+                        If Not CzoneText = LabelZoneText.Text Then
+                            _avrchar = 0
+                            _AwaitTIme = 0
+                            _MaxAwaitTIme = 100
+                            ContinueAwait = True
+                            LocalTextCounter = String.Empty
+
+                            For Effect As Integer = 0 To 2
+
+                                If _AwaitTIme = _MaxAwaitTIme Then
+                                    ContinueAwait = False
+                                    If _Showing.Count < CzoneText.Count And _Showing.Count > 0 Then
+                                        _Showing = CzoneText.Substring(0, _Showing.Length + 1)
+                                    ElseIf _Showing.Count < CzoneText.Count And _Showing.Count = 0 Then
+                                        _Showing = CzoneText.Substring(0, 1)
+                                    ElseIf _Showing.Count < _avrchar Then
+                                        _Showing = " " + _Showing
+                                    Else
+                                        _Showing = ""
+                                    End If
+                                    LocalTextCounter = _Showing
+                                    TextSetString(LabelZoneText.InfoNumber, _Showing)
+                                    TextSetPos(LabelZoneText.InfoNumber, LabelZoneText.X, LabelZoneText.Y)
+                                    System.Threading.Thread.Sleep(100)
+                                    If LocalTextCounter = CzoneText Then
+                                        LabelZoneText.Text = CzoneText
+                                        Exit For
+                                    End If
+                                End If
+
+                                If ContinueAwait = True Then
+                                    _AwaitTIme += 1
+                                End If
+
+                                Effect -= 1
+
+                            Next
+
+                        End If
 
 
+                    Else
 
-                    If Not CzoneText = LabelZoneText.Text Then
-                        TextSetString(LabelZoneText.InfoNumber, CzoneText)
-                        TextSetPos(LabelZoneText.InfoNumber, LabelZoneText.X, LabelZoneText.Y)
+                        If Not CzoneText = LabelZoneText.Text Then
+                            TextSetString(LabelZoneText.InfoNumber, CzoneText)
+                            TextSetPos(LabelZoneText.InfoNumber, LabelZoneText.X, LabelZoneText.Y)
+                            LabelZoneText.Text = CzoneText
+                        End If
+
                     End If
+
+
+
                 Catch ex As Exception
 
                 End Try
